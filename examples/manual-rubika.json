@@ -1,0 +1,18 @@
+{
+  "platform": "rubika",
+  "name": "نمونه روبیکا",
+  "username": "sample",
+  "members": 100000,
+  "posts": [
+    {"id": "1", "published_at": "2026-09-01T10:00:00+03:30", "views": 14000, "reactions": 200},
+    {"id": "2", "published_at": "2026-09-03T10:00:00+03:30", "views": 15000, "reactions": 200},
+    {"id": "3", "published_at": "2026-09-05T10:00:00+03:30", "views": 16000, "reactions": 200},
+    {"id": "4", "published_at": "2026-09-07T10:00:00+03:30", "views": 17000, "reactions": 200},
+    {"id": "5", "published_at": "2026-09-09T10:00:00+03:30", "views": 18000, "reactions": 200},
+    {"id": "6", "published_at": "2026-09-12T10:00:00+03:30", "views": 19000, "reactions": 200},
+    {"id": "7", "published_at": "2026-09-15T10:00:00+03:30", "views": 20000, "reactions": 200},
+    {"id": "8", "published_at": "2026-09-18T10:00:00+03:30", "views": 21000, "reactions": 200},
+    {"id": "9", "published_at": "2026-09-21T10:00:00+03:30", "views": 22000, "reactions": 200},
+    {"id": "10", "published_at": "2026-09-24T10:00:00+03:30", "views": 80000, "reactions": 200}
+  ]
+}
