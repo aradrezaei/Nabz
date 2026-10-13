@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>مبدأ دوم رِنج</title>
+  <style>
+    :root { color-scheme: dark; }
+    body {
+      margin: 0;
+      font-family: Tahoma, "Geeza Pro", sans-serif;
+      background: #1a120c;
+      color: #f6efe4;
+      line-height: 1.7;
+    }
+    main { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; }
+    h1 { font-size: 1.6rem; }
+    form, section {
+      background: #2c2118;
+      border: 1px solid #5c4634;
+      border-radius: 14px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+    label { display: grid; gap: 6px; }
+    input, button {
+      font: inherit;
+      padding: 8px 10px;
+    }
+    button { background: #e0a15a; border: 0; border-radius: 8px; }
+    code { color: #f0c48a; }
+    iframe { width: 100%; height: 180px; background: white; border: 1px solid #5c4634; }
+    .pair { display: grid; gap: 12px; }
+    @media (min-width: 800px) { .pair { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>مبدأ دوم</h1>
+    <p>این صفحه از <code>127.0.0.1:8081</code> سرو می‌شود. آزمایشگاه را در <code>http://localhost:8080</code> باز کنید تا کوکی نشست با این فرم همراه شود.</p>
+    <form id="bio-form" action="http://localhost:8080/profile/bio-set" method="get">
+      <label>نشان اثبات
+        <input id="token" name="bio" maxlength="180" required>
+      </label>
+      <p><button type="submit">ارسال بیو به آزمایشگاه</button></p>
+    </form>
+    <section>
+      <h2>مقایسه قاب</h2>
+      <div class="pair">
+        <div>
+          <p>ورود، هدر سخت‌گیر</p>
+          <iframe title="login frame" src="http://localhost:8080/login"></iframe>
+        </div>
+        <div>
+          <p>ویرایش پروفایل، هدر تمرینی</p>
+          <iframe title="profile frame" src="http://localhost:8080/profile/edit"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    var token = new URLSearchParams(location.search).get('token') || '';
+    document.getElementById('token').value = token;
+  </script>
+</body>
+</html>

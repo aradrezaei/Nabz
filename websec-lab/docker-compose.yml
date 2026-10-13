@@ -1,0 +1,48 @@
+name: range-lab
+
+services:
+  web:
+    build: .
+    ports:
+      - "127.0.0.1:8080:80"
+    environment:
+      APP_ENV: training
+      DB_HOST: db
+      DB_NAME: lab
+      DB_USER: lab
+      DB_PASS: lab_app_local
+      SECRETS_PATH: /var/www/secrets/flags.php
+      STORAGE_PATH: /var/www/storage
+    depends_on:
+      db:
+        condition: service_healthy
+
+  attacker:
+    image: nginx:alpine
+    ports:
+      - "127.0.0.1:8081:80"
+    volumes:
+      - ./attacker:/usr/share/nginx/html:ro
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: lab
+      MYSQL_USER: lab
+      MYSQL_PASSWORD: lab_app_local
+      MYSQL_ROOT_PASSWORD: lab_root_local
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-plab_root_local"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 25s
+
+volumes:
+  dbdata:
